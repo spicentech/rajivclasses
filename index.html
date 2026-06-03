@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajiv Classes | Premier Competitive Coaching Ghaziabad</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; scroll-behavior: smooth; }
+        body { background: var(--light); color: var(--dark); overflow-x: hidden; line-height: 1.6; }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--dark); text-transform: uppercase; }
+        .logo span { color: var(--primary); }
+        .nav-links a { text-decoration: none; color: var(--dark); margin-left: 20px; font-weight: 500; }
+        .yt-link { background: #ff0000; color: white !important; padding: 8px 15px; border-radius: 5px; }
+
+        /* Hero Section */
+        header {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(37,99,235,0.85)), 
+                        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 140px 20px 80px;
+        }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 2rem; line-height: 1.2; }
+        .hero-content p { font-size: 1.3rem; margin-bottom: 3rem; opacity: 0.9; max-width: 800px; margin: 0 auto 3rem auto; }
+
+        /* Social Proof Section */
+        .social-proof {
+            background: white;
+            padding: 40px 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #eee;
+        }
+        .proof-item { font-weight: bold; color: #64748b; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .proof-item:hover { color: var(--primary); }
+
+        .section-padding { padding: 80px 10%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+        /* Course Cards */
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+        .card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--primary); }
+        .card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+
+        /* Library Section */
+        .library-section {
+            background: white;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .library-content { padding: 50px; }
+        .library-image { height: 100%; background: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80') center/cover; }
+        .price-tag { color: var(--accent); font-size: 3rem; font-weight: bold; margin: 15px 0; }
+        .library-list { list-style: none; margin-top: 20px; }
+        .library-list li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .library-list li i { color: #10b981; }
+
+        /* Common Form Container */
+        .form-container { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; }
+        input, select, textarea { width: 100%; padding: 14px; margin: 12px 0; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 1rem; }
+        textarea { height: 120px; font-family: inherit; resize: none; }
+        .btn { background: var(--primary); color: white; border: none; padding: 18px 35px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; display: inline-block; text-decoration: none; width: 100%; }
+        .btn:hover { background: var(--dark); transform: scale(1.02); }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; padding: 70px 10% 20px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.5fr; gap: 40px; border-bottom: 1px solid #334155; padding-bottom: 40px; }
+        .clickable-info { color: white; text-decoration: none; display: block; margin-top: 12px; transition: 0.3s; }
+        .clickable-info:hover { color: var(--secondary); }
+        .address-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #1e293b; font-size: 0.9rem; }
+        .address-item:last-child { border-bottom: none; }
+        .address-item strong { color: var(--secondary); display: block; margin-bottom: 4px; }
+        .map-btn { float: right; background: #4285F4; color: white; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; text-decoration: none; }
+
+        @media (max-width: 992px) { .footer-grid, .library-section { grid-template-columns: 1fr; } .library-image { height: 250px; } }
+		/* Loading Spinner Animation */
+.loader {
+    display: none; /* Hidden by default */
+    width: 30px;
+    height: 30px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.btn:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+    transform: none !important;
+}
+/* Course Section Styling */
+#courses-section {
+    padding: 60px 20px;
+    background-color: #f8fafc;
+}
+
+.course-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.course-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #2563eb; /* Blue accent */
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+}
+
+.course-card h3 {
+    color: #1e293b;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.course-card p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 12px;
+    background: #e0e7ff;
+    color: #4338ca;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.section-title {
+    text-align: center;  /* This centers the text */
+    margin-bottom: 40px; /* Adds space below the heading */
+    font-size: 2.5rem;   /* Adjust size as needed */
+    color: #1e293b;      /* Matches your modern professional look */
+    width: 100%;         /* Ensures it takes full width to center correctly */
+}
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;         /* Length of the underline */
+    height: 4px;         /* Thickness */
+    background: #2563eb; /* Blue accent color */
+    margin: 10px auto 0; /* 'auto' centers the underline */
+    border-radius: 2px;
+}
+.datetime-badge {
+    position: fixed;
+    top: 80px;
+    left: 20px; /* Changed from right to left */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 18px;
+    border-radius: 12px; /* Slightly more square for a modern UI look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1001; /* High z-index to stay above other elements */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-left: 4px solid #2563eb; /* Blue accent line */
+}
+/* Container for the centered clock */
+.header-center-clock {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Prevents the clock from blocking clicks on nav links */
+}
+
+/* Date Styling */
+.date-box {
+    font-size: 0.7rem;
+    color: #2563eb; /* Matches your blue theme */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+/* Time Styling */
+.time-box {
+    font-size: 1.15rem;
+    color: #1e293b; /* Deep slate for readability */
+    font-weight: 800;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 2px;
+}
+
+/* Hide on mobile to prevent overlapping with logo/menu */
+@media (max-width: 768px) {
+    .header-center-clock {
+        display: none;
+    }
+}
+/* Centering Logic for the Clock Container */
+#datetime-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap; /* Prevents the time from breaking into two lines */
+    pointer-events: none; /* Allows clicks to pass through to links underneath */
+}
+	</style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Rajiv <span>Classes</span></div>
+		
+        <div class="nav-links">
+            <a href="#">Home</a>
+			<a href="#courses-section">Courses</a>
+            <a href="#library">Library</a>
+            <a href="https://www.youtube.com/@RajivClassesGhaziabad" target="_blank" class="yt-link"><i class="fab fa-youtube"></i> YouTube</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero-content">
+            <h1>Shape Your Career with Expert Guidance</h1>
+            <p>Empowering students in Ghaziabad for SSC, Bank, Railway, and State Government exams since 2015.</p>
+            <a href="#register" class="btn" style="width: auto;">Book Your Free Demo Class</a>
+            <p style="margin-top:25px; opacity:0.8; font-style:italic;">Under the Direction of Rajiv Ranjan Singh</p>
+        </div>
+    </header>
+
+    <div class="social-proof">
+	<h2 class="section-title">Our Social Connectivity</h2>
+        <a href="https://www.justdial.com/Ghaziabad/Rajiv-Classes-Nehru-Nagar-3/011PXX11-XX11-150424125345-T8G9_BZDET" target="_blank" class="proof-item"><i class="fas fa-search"></i> Justdial Verified</a>
+        <a href="https://collegedunia.com/" target="_blank" class="proof-item"><i class="fas fa-university"></i> Collegeduniya</a>
+        <a href="https://www.facebook.com/rajivclassesgzb/" target="_blank" class="proof-item"><i class="fab fa-facebook"></i> Facebook Official</a>
+    </div>
+	<section id="courses-section" class="section">
+    <h2 class="section-title">Courses Offered</h2>
+    <div class="course-container">
+        
+        <!-- Box 1: Government & Administrative -->
+        <div class="course-card">
+            <h3>Govt. & Administrative</h3>
+            <p>Comprehensive preparation for entry-level and administrative roles in central and state departments.</p>
+            <div class="tags-container">
+                <span class="tag">SSC</span>
+                <span class="tag">BANK</span>
+                <span class="tag">RAILWAY</span>
+            </div>
+        </div>
+
+        <!-- Box 2: Teaching & Education -->
+        <div class="course-card">
+            <h3>Teaching & Education</h3>
+            <p>Specialized coaching for teaching eligibility and educational degree entrance examinations.</p>
+            <div class="tags-container">
+                <span class="tag">C-TET / TET</span>
+                <span class="tag">B.ED</span>
+            </div>
+        </div>
+
+        <!-- Box 3: Defense & Uniform Services -->
+        <div class="course-card">
+            <h3>Defense & Police</h3>
+            <p>Rigorous training for those aiming to serve in the armed forces or local law enforcement agencies.</p>
+            <div class="tags-container">
+                <span class="tag">ARMY</span>
+                <span class="tag">SI</span>
+                <span class="tag">POLICE</span>
+            </div>
+        </div>
+
+        <!-- Box 4: General Competitions -->
+        <div class="course-card">
+            <h3>Competitive Exams</h3>
+            <p>Expert guidance and study material for all other major competitive examinations.</p>
+            <span class="tag">ALL COMPETITIVE EXAMS</span>
+        </div>
+
+    </div>
+</section>
+
+    <!-- Registration Form -->
+    <section id="register" class="section-padding">
+        <div class="form-container">
+            <h2 style="margin-bottom: 25px; text-align: center;">Register for a Free Trial</h2>
+            <input type="text" id="reg-name" placeholder="Full Name" required>
+            <input type="text" id="reg-phone" placeholder="Mobile Number" required>
+			<input type="email" id="reg-email" placeholder="Email Address" required> 
+			<select id="reg-branch">
+                <option value="">Select Nearest Branch</option>
+                <option value="Rakesh Marg">H-2 Rakesh Marg, Nehru Nagar III</option>
+                <option value="Sanjay Nagar">J-30 Sanjay Nagar, Sec-23</option>
+                <option value="Shastri Nagar">Purnima Garden, Shastri Nagar</option>
+                <option value="Vijay Nagar">E-182, New Vijay Nagar</option>
+            </select>
+			<div id="reg-loader" class="loader"></div>
+			<button id="reg-btn" class="btn" onclick="submitRegistration()">Confirm Registration</button>
+        </div>
+    </section>
+
+    <!-- Library Section -->
+    <section id="library" class="section-padding" style="background: #f1f5f9;">
+        <div class="library-section">
+            <div class="library-content">
+                <h2>Premium Library Facility</h2>
+                <div class="price-tag">₹500 <span>/ month</span></div>
+                <p>A quiet, air-conditioned environment designed for deep focus.</p>
+                <ul class="library-list">
+                    <li><i class="fas fa-check-circle"></i> High-Speed Unlimited Wi-Fi</li>
+                    <li><i class="fas fa-check-circle"></i> Individual Study Cabicles</li>
+                    <li><i class="fas fa-check-circle"></i> Peaceful, Distraction-Free Atmosphere</li>
+                </ul>
+            </div>
+            <div class="library-image"></div>
+        </div>
+    </section>
+
+    <!-- ASK INQUIRY SECTION (NEW) -->
+    <section id="ask-inquiry" class="section-padding" style="background: white;">
+        <div class="form-container">
+            <h2 style="margin-bottom: 25px; text-align: center;">Ask an Inquiry</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #64748b;">Have a question? Drop it here and we'll get back to you.</p>
+            <input type="text" id="inq-name" placeholder="Your Name" required>
+            <input type="text" id="inq-phone" placeholder="Phone Number" required>
+            <textarea id="inq-message" placeholder="Type your question or query here..."></textarea>
+			<div id="inq-loader" class="loader" style="display: none;"></div>
+			<button id="inq-btn" class="btn" onclick="submitInquiry()">Send Message</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="logo" style="color:white; margin-bottom:20px;">Rajiv <span>Classes</span></div>
+                <p style="opacity: 0.8; font-size: 0.9rem;">Founded by Rajiv Ranjan Singh. Dedicated to high-quality competitive exam coaching in Ghaziabad since 2015.</p>
+                <div style="margin-top: 25px;">
+                    <a href="https://www.youtube.com/@RajivClassesGhaziabad" target="_blank" class="clickable-info"><i class="fab fa-youtube"></i> YT Channel : Rajiv Classes GZB</a>
+                </div>
+            </div>
+            <div>
+                <h3>Contact Us</h3>
+                <a href="tel:7557346441" class="clickable-info"><i class="fas fa-phone"></i> +91 75573 46441</a>
+                <a href="tel:9318472586" class="clickable-info"><i class="fas fa-phone"></i> +91 93184 72586</a>
+                <a href="mailto:rajivclassesgzb@gmail.com" class="clickable-info"><i class="fas fa-envelope"></i> Email Us</a>
+            </div>
+           <div>
+                <h3>Our 4 Branches</h3>
+                <div class="address-item">
+                    <a href="https://www.google.com/maps/search/Rajiv+Classes+Rakesh+Marg" class="map-btn" target="_blank"><i class="fas fa-location-arrow"></i></a>
+                    <strong>Add (I): Rakesh Marg</strong> H-2, UCO Bank, Nehru Nagar III, Gzb
+                </div>
+                <div class="address-item">
+                    <a href="https://www.google.com/maps/search/Rajiv+Classes+Sanjay+Nagar" class="map-btn" target="_blank"><i class="fas fa-location-arrow"></i></a>
+                    <strong>Add (II): Sanjay Nagar</strong> J-30, IInd Floor, Sec-23, Gzb
+                </div>
+                <div class="address-item">
+                    <a href="https://www.google.com/maps/search/Rajiv+Classes+Shastri+Nagar" class="map-btn" target="_blank"><i class="fas fa-location-arrow"></i></a>
+                    <strong>Add (III): Shastri Nagar</strong> Purnima Garden, Shastri Nagar, Gzb
+                </div>
+                <div class="address-item">
+                    <a href="https://www.google.com/maps/search/Rajiv+Classes+Vijay+Nagar" class="map-btn" target="_blank"><i class="fas fa-location-arrow"></i></a>
+                    <strong>Add (IV): New Vijay Nagar</strong> E-182, IInd Floor, Sec-9, Gzb
+                </div>
+            </div>
+        </div>
+        </div>
+        <div style="text-align: center; padding-top: 30px; font-size: 0.85rem; opacity: 0.7;">
+            &copy; 2026 Rajiv Classes Ghaziabad. | Designed and Developed By <a href="https://spicentech.github.io/spicentech/" style="text-decoration: none; color: #ff5733">SPICEN TECH</a>
+        </div>
+    </footer>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyqOM8RP-GOt5WO7LOsMtbkHhu2WUU8z99OqiSE8mffqrX64ukcDRzexHSZqH3eXRC7/exec';
+
+function submitRegistration() {
+    const btn = document.getElementById('reg-btn');
+    const loader = document.getElementById('reg-loader');
+    
+    // Grab the values from your HTML inputs
+    const name = document.getElementById('reg-name').value;
+    const phone = document.getElementById('reg-phone').value;
+    const email = document.getElementById('reg-email').value; // Must match <input id="reg-email">
+    const branch = document.getElementById('reg-branch').value;
+
+    if(!name || !phone || !email || !branch) {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    btn.disabled = true;
+    loader.style.display = 'block';
+
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({
+            formType: 'registration',
+            name: name,
+            phone: phone,
+            email: email, // This key MUST match 'data.email' in the script
+            branch: branch,
+            time: new Date().toLocaleString()
+        })
+    })
+    .then(() => {
+        alert("Success! Check your inbox.");
+        // Clear inputs
+        document.getElementById('reg-name').value = '';
+        document.getElementById('reg-phone').value = '';
+        document.getElementById('reg-email').value = '';
+    })
+    .catch(() => alert("Error saving data."))
+    .finally(() => {
+        btn.disabled = false;
+        loader.style.display = 'none';
+    });
+}
+function submitInquiry() {
+    const btn = document.getElementById('inq-btn');
+    const loader = document.getElementById('inq-loader'); // Reference the new loader
+    
+    const name = document.getElementById('inq-name').value;
+    const phone = document.getElementById('inq-phone').value;
+    const message = document.getElementById('inq-message').value;
+
+    if(!name || !phone || !message) { 
+        alert("Please fill all inquiry fields."); 
+        return; 
+    }
+
+    // Start loading state
+    btn.disabled = true;
+    loader.style.display = 'block';
+
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({ 
+            formType: 'inquiry', 
+            name: name, 
+            phone: phone, 
+            message: message, 
+            time: new Date().toLocaleString() 
+        })
+    })
+    .then(() => {
+        alert("Your inquiry has been sent!");
+        document.getElementById('inq-name').value = '';
+        document.getElementById('inq-phone').value = '';
+        document.getElementById('inq-message').value = '';
+    })
+    .catch(() => alert("Error sending inquiry."))
+    .finally(() => {
+        // Stop loading state
+        btn.disabled = false;
+        loader.style.display = 'none';
+    });
+}
+function updateClock() {
+    const now = new Date();
+    
+    // Formatting Date (e.g., May 03, 2026)
+    const dateOptions = { month: 'short', day: '2-digit', year: 'numeric' };
+    const dateStr = now.toLocaleDateString('en-IN', dateOptions);
+    
+    // Formatting Time (e.g., 12:30:05 PM)
+    const timeStr = now.toLocaleTimeString('en-IN', { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit',
+        hour12: true 
+    });
+
+    document.getElementById('current-date').innerText = dateStr;
+    document.getElementById('current-time').innerText = timeStr;
+}
+
+// Update clock every second
+setInterval(updateClock, 1000);
+
+// Initialize clock immediately on load
+updateClock();
+    </script>
+</body>
+</html>
